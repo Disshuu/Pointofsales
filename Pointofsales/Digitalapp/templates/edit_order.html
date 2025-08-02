@@ -1,0 +1,26 @@
+<h2>Edit Order</h2>
+<form method="post">
+  {% csrf_token %}
+  
+  <label>Customer:</label>
+  <select name="customer">
+    {% for customer in customers %}
+    <option value="{{ customer.id }}" {% if customer.id == order.customer.id %}selected{% endif %}>{{ customer.name }}</option>
+    {% endfor %}
+  </select><br>
+
+  <label>Product:</label>
+  <select name="product">
+    {% for product in products %}
+    <option value="{{ product.id }}" {% if product.id == order.product.id %}selected{% endif %}>{{ product.name }}</option>
+    {% endfor %}
+  </select><br>
+
+  <label>Quantity:</label>
+  <input type="number" name="quantity" value="{{ order.quantity }}"><br>
+
+  <label>Address:</label>
+  <input type="text" name="address" value="{{ order.address }}"><br>
+
+  <button type="submit">Update Order</button>
+</form>

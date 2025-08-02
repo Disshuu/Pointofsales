@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Point of sales System</title>
+    <style>
+        body {
+            background-color: #f0f8ff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #555;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Add The Product Here</h1>
+    
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="text" name="name" id="" placeholder="Enter Product name">
+        <input type="number" name="price" id="" placeholder="Enter Product price">
+        <input type="number" name="quantity" id="" placeholder="Enter Product quantity">
+         <input type="number" name="discount" id="" placeholder="Enter Product discount">
+        
+
+        
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <div>
+        {% for i in data %}
+          <li> {{i.name}} - {{i.price}} - {{i.quantity}} - {{i.discount}} <a href="{% url "edit" i.id %}">edit</a>|<a href="{% url "delete" i.id %}">Delete</a></li>
+        {% endfor %}
+    </div>
+</body>
+</html>

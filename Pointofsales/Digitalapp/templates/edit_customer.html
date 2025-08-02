@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Customer</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            text-align: center;
+            padding: 50px;
+        }
+
+        form {
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        input {
+            padding: 10px;
+            margin: 8px;
+            width: 250px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #2980b9;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        h2 {
+            color: #2c3e50;
+        }
+    </style>
+</head>
+<body>
+    <h2>Edit Customer</h2>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="name" value="{{ customer.name }}" required><br>
+        <input type="email" name="email" value="{{ customer.email }}" required><br>
+        <input type="text" name="contact" value="{{ customer.contact }}" required><br>
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>
